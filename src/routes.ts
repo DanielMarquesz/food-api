@@ -1,14 +1,14 @@
-import { BooksController } from './controllers/booksController';
+import { FoodsController } from './controllers/foodsController';
 import { Router } from "express";
 
 const router = Router();
 
-const booksController = new BooksController();
+const foodsController = new FoodsController();
 
-router.get('/books', booksController.list);
-router.get('/books/:id', booksController.listOne);
-router.post('/books', booksController.create);
-router.put('/books/:id', booksController.update);
-router.delete('/books/:id', booksController.delete);
+router.get('/foods', foodsController.list);
+router.get('/foods/:id', foodsController.listOne);
+router.post('/foods', foodsController.create);
+router.put('/foods/:id', foodsController.update);
+router.delete('/foods/:id', foodsController.delete);
 
-export {router}
+export { router }
