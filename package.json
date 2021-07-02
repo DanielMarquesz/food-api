@@ -1,0 +1,20 @@
+{
+  "name": "foods-api",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "author": "Daniel Marques",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/mongoose": "^5.11.97",
+    "concurrently": "^6.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.0",
+    "nodemon": "^2.0.9"
+  },
+  "scripts": {
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/index.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"yarn run watch-ts\" \"yarn run watch-node\""
+  }
+}
