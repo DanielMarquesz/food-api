@@ -40,11 +40,12 @@ class BooksController {
 
   async update(req: Request, res: Response){    
     try {
-      const books = Book.findByIdAndUpdate(req.params.id, req.body);
+      const books = await Book.findByIdAndUpdate(req.params.id, req.body);
       if(books) {
         return res.status(201).json({books});
       }
     } catch(err) {
+      console.log(err)
       return res.status(400).json({error: err});
     }
   }
@@ -59,7 +60,6 @@ class BooksController {
       return res.json({error: err});
     }
   }
-
 }
 
 export { BooksController }
