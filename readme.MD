@@ -6,7 +6,7 @@
 
 ### How works
 
-  After clone the repository use `yarn install` or `yarn i` to install all the dependencies. You will also need mangodb installed in your machine. After that you can run `yarn start` and access `http://localhost:3000/swagger/` to see all the documentation abaout the routes an how to use then.
+  After clone the repository use `yarn install` or `yarn i` to install all the dependencies. You will also need mongodb installed in your machine and create a `.env` file with a variable "URI" with your local host address. After that you can run `yarn start` and access `http://localhost:3000/swagger/` to see all the documentation abaout the routes an how to use then.
 
 ### Technologies
 
