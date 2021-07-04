@@ -1,6 +1,8 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config();
 
-const uri:string = 'mongodb://127.0.0.1:27017/localhost'
+const uri:any  = process.env.URI;
 
 mongoose.set('useCreateIndex', true);
 
