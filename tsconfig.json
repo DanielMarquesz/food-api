@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "outDir": "./dist",
     "strict": true,      
-    "esModuleInterop": true,
     "sourceRoot": "./src",
     "inlineSourceMap": true
   }

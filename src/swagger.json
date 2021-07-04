@@ -1,0 +1,210 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "foods-rest-api",
+    "description": "A basic rest api that allow us to manage foods",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "Foods",
+      "description": "A REST api for foods."
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/foods/{id}" : {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Id of the food that we want.",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Delete a food with the given id.",
+        "responses": {
+          "200": {
+            "description": "Sucefully deleted",
+            "schema":{
+              "$ref": "#definitions/noContent"
+            }
+          },
+          "404": {
+            "description": "Food not found."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Foods"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "Food with new values",
+            "schema": {
+              "$ref": "#/definitions/food"
+            }
+          }
+        ],
+        "summary": "Update a food with the given id.",
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema":{
+              "$ref": "#definitions/Onefood"
+            }
+          },
+          "400": {
+            "description": "Bad post data."
+          },
+          "404": {
+            "description": "Food not found."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Return a food with the given id.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema":{
+              "$ref": "#definitions/Onefood"
+            }
+          },
+          "404": {
+            "description": "Food not found."
+          }
+        }
+      }
+    },
+    "/foods":{
+      "get":{
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Return all the foods in the system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {              
+              "$ref": "#/definitions/Onefood"   
+            }
+          },
+          "400": {
+            "description": "An error just happen with the request."
+          }
+        }
+      },      
+      "post":{
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Register a new food in the system.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A food that we want to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/food"
+            } 
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {           
+              "$ref": "#/definitions/Onefood"   
+            }
+          },
+          "400": {
+            "description": "Faild. Bad post data.",
+            "schema": {           
+              "$ref": "#/definitions/food"   
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {    
+    "food": { 
+      "type":"object",
+      "properties": {        
+        "name": {
+          "type": "string"          
+        },
+        "category": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "validity": {
+          "type": "string"
+        }
+      }
+    },
+    "Onefood": { 
+      "type":"object",
+      "properties": {       
+        "id": {
+          "type": "string"          
+        }, 
+        "name": {
+          "type": "string"          
+        },
+        "category": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "validity": {
+          "type": "string"
+        }
+      }
+    },
+    "noContent": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "number"
+        },
+        "ok": {
+          "type": "number"
+        },
+        "deletedCount": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
