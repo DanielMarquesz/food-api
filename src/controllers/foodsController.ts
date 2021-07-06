@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import Food from '../models/food';
+import { loggerInfo } from "../utils/logger";
+import { loggerError } from "../utils/logger";
+
 
 class FoodsController {
 
@@ -7,10 +10,12 @@ class FoodsController {
     try {
       const foods = await Food.find();
       if(foods) {
+        loggerInfo.log('info', foods);
         return res.status(200).json({foods});
       }
     } catch(err) {
-      return res.status(404).json({error: err});
+      loggerError.log('error', err);
+      return res.status(404).json({error: err});      
     }
   }
 
@@ -18,9 +23,11 @@ class FoodsController {
     try {
       const foods = await Food.findById(req.params.id);         
       if(foods) {
+        loggerInfo.log('info', foods);
         return res.status(200).json({foods});
       }
     } catch(err) {
+      loggerError.log('error', err);
       return res.status(404).json({error: err});
     }
   }
@@ -30,9 +37,11 @@ class FoodsController {
     try {
       const foods = await updatedFood.save();
       if(foods) {
+        loggerInfo.log('info', foods);
         return res.status(201).json({foods});
       }
     } catch(err) {
+      loggerError.log('error', err);
       return res.status(400).json({error: err});
     }
   }
@@ -41,10 +50,11 @@ class FoodsController {
     try {
       const foods = await Food.findByIdAndUpdate(req.params.id, req.body);
       if(foods) {
+        loggerInfo.log('info', foods);
         return res.status(204).json({foods});
       }
     } catch(err) {
-      console.log(err);
+      loggerError.log('error', err);
       return res.status(400).json({error: err});
     }
   }
@@ -53,9 +63,11 @@ class FoodsController {
     try {
       const foods = await Food.deleteOne({_id: req.params.id});
       if(foods) {
+        loggerInfo.log('info', foods);
         return res.status(200).json({foods});
       }
     } catch(err) {
+      loggerError.log('error', err);
       return res.status(404).json({error: err});
     }
   }

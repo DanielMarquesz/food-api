@@ -2,3 +2,5 @@
 /dist
 .env
 /coverage
+/src/utils/logs/error.log
+/src/utils/logs/info.log
